@@ -1,1 +1,54 @@
+insert into Orders values(5004,2345,107,'2022-03-29',3000);
+drop table Salesman
+
+INSERT INTO Salesman (SalesmanId, Name, Commission, City, Age)
+VALUES
+    (101, 'Joe', 50, 'California', 17),
+    (102, 'Simon', 75, 'Texas', 25),
+    (103, 'Jessie', 105, 'Florida', 35),
+    (104, 'Danny', 100, 'Texas', 22),
+    (105, 'Lia', 65, 'New Jersey', 30);
+    (106, 'Diya', 65, 'New York', 30);
+
+CREATE TABLE Salesman (
+    SalesmanId INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Commission DECIMAL(10, 2),
+    City VARCHAR(255) DEFAULT 'Texas',
+    Age INT
+);
+
+INSERT INTO Customer (SalesmanId, CustomerId, CustomerName, PurchaseAmount)
+VALUES
+    (101, 2345, 'Andrew', 550),
+    (103, 1575, 'Lucky', 4500),
+    (104, 2345, 'Andrew', 4000),
+    (102, 3747, 'Remona', 2700),
+    (105, 4004, 'Julia', 4545),
+     (101, 2345, 'Andren', 550);
+
+drop table Customer
+CREATE TABLE Customer (
+    SalesmanId INT FOREIGN KEY(SalesmanId) references Salesman(SalesmanId) ,
+    CustomerId INT,
+    CustomerName VARCHAR(255) NOT NULL,
+    PurchaseAmount INT,
+    );
+
+Select * from Customer where CustomerName LIKE '%n';
+
+select SalesmanId from Salesman 
+EXCEPT
+select SalesmanID from Customer
+
+select SalesmanId from Salesman 
+INTERSECT
+select SalesmanID from Customer
+
+select Orderdate,Name,CustomerName,Commission,City from Orders,Salesman,Customer where purchaseamount between 500 and 1500;
+
+select * from Salesman right join Orders on Salesman.SalesmanId=Orders.SalesmanId
+
+select * from Customer
+drop database ass1
 
