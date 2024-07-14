@@ -1,1 +1,37 @@
-
+const ps = require('prompt-sync')
+const prompt = new ps();
+while (1 == 1) {
+    console.log('MENU\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Exit');
+    var num = prompt("Choose a number");
+    if (num == 1) {
+        a = prompt("Enter a number");
+        b = prompt("Enter a number");
+        console.log(a + b);
+    }
+    if (num == 2) {
+        a = prompt("Enter a number");
+        b = prompt("Enter a number");
+        console.log(a - b);
+    }
+    if (num == 3) {
+        a = prompt("Enter a number");
+        b = prompt("Enter a number");
+        console.log(a * b);
+    }
+    if (num == 4) {
+        a = prompt("Enter a number");
+        b = prompt("Enter a number");
+        if (b != 0) {
+            console.log(a / b);
+        } else {
+            console.log("b cannot be zero");
+        }
+    }
+    if (num == 5) {
+        console.log("EXIT");
+        break;
+    }
+    if (num > 5 || num < 0) {
+        console.log("Invalid")
+    }
+}
