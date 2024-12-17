@@ -1,5 +1,32 @@
 ASSIGNMENT 01 :
 Linux Installation and Initialization (Automated)
- What is the kick start installation?
-What is the name and location of the default kick start configuration file?
-What are the settings to be written in ks.cfg for LVM partitioning to be created.
+1.What is the kick start installation?
+2.What is the name and location of the default kick start configuration file?
+3.What are the settings to be written in ks.cfg for LVM partitioning to be created.
+
+
+Answers 
+1.A kick start installation is the process of having a configuration file that does the installation of an operating system automatically without any manual labor, the partitioning and the network
+configuration are all done by the file itself as specified in the kickstart.cfg file 
+
+2.the name and location of the default kick start configuration file is as follows :- 
+Name : anaconda-ks.cfg 
+Location : root/ 
+
+3.the settings to be written in ks.cfg for LVM paritiioning to be created are as follows 
+
+FOR PARTITIONING 
+
+part pv.01 --fstype="lvmpv" --size=10000
+volgroup my_vg pv.01
+
+# Create logical volumes in 'my_vg'
+logvol / --fstype="xfs" --size=8000 --name=root --vgname=my_vg
+logvol /home --fstype="xfs" --size=4000 --name=home --vgname=my_vg
+logvol swap --fstype="swap" --size=2048 --name=swap --vgname=my_vg
+
+FOR NETWORKING   
+network --bootproto=dhcp --device=eth0 --onboot=yes
+
+
+
